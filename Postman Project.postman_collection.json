@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "cad4c0cc-4e94-4cc3-9ed0-4fe083da0fef",
+		"name": "Postman Project",
+		"description": "A collection of my first test requests.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET contributors",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c4f6980c-d66c-4836-ac4d-e53882857354",
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"var author = jsonData.contributors.find(obj => obj.type === \"author\");\r",
+							"var cat = jsonData.contributors.find(obj => obj.type === \"cat\");\r",
+							"\r",
+							"//console.log(author.firstName);\r",
+							"//console.log(cat.firstName);\r",
+							"\r",
+							"pm.test(\"Author Name\", function () {\r",
+							"    pm.expect(author.firstName).to.eql(\"Lucas\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cat Name\", function () {\r",
+							"    pm.expect(cat.firstName).to.eql(\"Agostinho\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://744f1200-9c64-4f8b-b9c5-b3bd3f5a16c2.mock.pstmn.io/contributors",
+					"protocol": "https",
+					"host": [
+						"744f1200-9c64-4f8b-b9c5-b3bd3f5a16c2",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"contributors"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GET <mock-server>/contributors",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://744f1200-9c64-4f8b-b9c5-b3bd3f5a16c2.mock.pstmn.io/contributors",
+							"protocol": "https",
+							"host": [
+								"744f1200-9c64-4f8b-b9c5-b3bd3f5a16c2",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"contributors"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"contributors\": [\n        {\n            \"id\": \"1\",\n            \"type\": \"author\",\n            \"firstName\": \"Lucas\",\n            \"lastName\": \"Machado\",\n            \"CollectionUnderstanting\": \"At first, I thought a collection was just like a simple folder where I could separate my requests in different blocks. But now I see it's more like a Git repository, full of features, where I'm not just able to organize my work, but also invite my team mates to collaboratively develop a project, test stuff and publish the whole thing with a few clicks\",\n            \"BestFeature\": \"Publish Docs option. It's amazing how fast you can publish your API reference with that, and it's a feature that you don't really see out there.\",\n            \"FavBands\":\"I love some classic noise rock like Sonic Youth and Queens of the Stone Age, and also current indie rock bands like Arctic Monkeys and Wolf Alice.\"\n        },\n        {\n            \"id\": \"2\",\n            \"type\": \"cat\",\n            \"firstName\": \"Agostinho\",\n            \"lastName\": \"The cat\",\n            \"CollectionUnderstanting\": \"Meow\",\n            \"BestFeature\": \"Meow Meow\",\n            \"FavBands\": \"Miau (it's just meow, but in portuguese.)\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "DELETE author",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "601b84b6-f8e4-49e2-a403-4270599c474e",
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://744f1200-9c64-4f8b-b9c5-b3bd3f5a16c2.mock.pstmn.io/contributors?type=author",
+					"protocol": "https",
+					"host": [
+						"744f1200-9c64-4f8b-b9c5-b3bd3f5a16c2",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"contributors"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "author"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "DELETE <mock-server>/contributors?type=author",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://744f1200-9c64-4f8b-b9c5-b3bd3f5a16c2.mock.pstmn.io/contributors?type=author",
+							"protocol": "https",
+							"host": [
+								"744f1200-9c64-4f8b-b9c5-b3bd3f5a16c2",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"contributors"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "author"
+								}
+							]
+						}
+					},
+					"status": "Method Not Allowed",
+					"code": 405,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Allow",
+							"value": "GET, POST, PUT",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "TSE-Lucas-Custom-Header",
+							"value": "Author-Delete-Constraint",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errorMessage\": \"Author cannot be deleted.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "GET cat",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "071d1de1-cd8f-46b2-8ab8-7d1fdf24640c",
+						"exec": [
+							"pm.test(\"Cat is Agostinho\", () => {\r",
+							"  const responseJson = pm.response.json();\r",
+							"  //console.log(responseJson.firstName);\r",
+							"  pm.expect(responseJson.firstName).to.eql(\"Agostinho\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://744f1200-9c64-4f8b-b9c5-b3bd3f5a16c2.mock.pstmn.io/contributors?type=cat",
+					"protocol": "https",
+					"host": [
+						"744f1200-9c64-4f8b-b9c5-b3bd3f5a16c2",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"contributors"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "cat"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GET <mock-server>/contributors?type=cat",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://744f1200-9c64-4f8b-b9c5-b3bd3f5a16c2.mock.pstmn.io/contributors?type=cat",
+							"protocol": "https",
+							"host": [
+								"744f1200-9c64-4f8b-b9c5-b3bd3f5a16c2",
+								"mock",
+								"pstmn",
+								"io"
+							],
+							"path": [
+								"contributors"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "cat"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"2\",\n    \"type\": \"cat\",\n    \"firstName\": \"Agostinho\",\n    \"lastName\": \"The cat\",\n    \"CollectionUnderstanting\": \"Meow\",\n    \"BestFeature\": \"Meow Meow\",\n    \"FavBands\": \"Miau (it's just meow, but in portuguese.)\"\n}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}
